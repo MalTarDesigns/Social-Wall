@@ -1,0 +1,95 @@
+html,
+body {
+	height:100%;
+	font-family: FuturaLight,"Trebuchet MS",Arial,sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+	color: black;
+	font-family: FuturaLight,"Trebuchet MS",Arial,sans-serif;
+}
+
+.btn-primary {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.btn-group-justified {
+	display: block;
+}
+
+.cat:hover {
+    background: black;
+}
+
+#columns {
+	margin-top: 30px;
+}
+
+.thumbnail {
+	padding: 20px 13px 0px;
+}
+
+.thumbnail .Manual-icon,
+.thumbnail .Twitter-icon,
+.thumbnail .Instagram-icon {
+	height: 40px;
+	width: 30px;
+	background-color: #000;
+	color: #fff;
+	position: absolute;
+	margin: -30px 0px 0px 0px;
+	border-radius: 15%;
+    text-align: center;
+}
+
+.thumbnail .Manual-icon {
+    background-color: red;
+}
+
+.thumbnail .aff-text {
+	margin-top: 13px;
+	font-size: 0.9em;
+	display: block;
+}
+
+.thumbnail .fa {
+	font-size: 1.6em;
+	margin-top: 13px;
+}
+
+
+.panel-body {
+    padding: 0px;
+}
+
+.tweet {
+    padding: 0 10px;
+    text-align: center;
+}
+
+.btn-lg {
+	margin: 0 auto;
+	display: block;
+	clear: both;
+	margin-bottom: 10px;
+}
+
+/*******************
+    MEDIA QUERIES
+*******************/
+@media screen and (min-width: 1px) and (max-width: 767px){
+    #columns[data-columns]::before {
+        content: '1 .col-xs-12';
+    }
+}
+@media screen and (min-width:768px) and (max-width: 991px){
+    #columns[data-columns]::before {
+        content: '3 .col-sm-4';
+    }
+}
+@media screen and (min-width:992px) and (max-width: 9999px){
+    #columns[data-columns]::before {
+        content: '3 .col-md-4';
+    }
+}
