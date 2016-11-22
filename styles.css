@@ -30,6 +30,10 @@ h1,h2,h3,h4,h5 {
 	padding: 20px 13px 0px;
 }
 
+.thumbnail .caption {
+	margin-top: 10px; 
+}
+
 .thumbnail .Manual-icon,
 .thumbnail .Twitter-icon,
 .thumbnail .Instagram-icon {
@@ -58,14 +62,16 @@ h1,h2,h3,h4,h5 {
 	margin-top: 13px;
 }
 
-
 .panel-body {
     padding: 0px;
 }
 
+.Twitter {
+	text-align: center;
+}
+
 .tweet {
     padding: 0 10px;
-    text-align: center;
 }
 
 .btn-lg {
