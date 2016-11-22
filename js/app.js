@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-    function append(company, imageUrl, title, content, tweet, caption, link) {
+    function append(company, imageUrl, title, content, tweet, caption, link) {      
         // set the elements
         var grid = $('#columns')[0];
         var item = document.createElement('div');
@@ -9,7 +9,7 @@ $( document ).ready(function() {
         h += '<div class="' + company + '-icon"></div>';
         h += '<img src="' + imageUrl + '" alt="">';
         h += '<div class="caption">';
-        h += '<p class="text-center">' + title + '</p>';
+        h += '<p>' + title + '</p>';
         h += '</div>';
         h += '<div class="panel-body">';
         h += '<p class="content text-muted">' + content + '</p>';
@@ -24,15 +24,35 @@ $( document ).ready(function() {
 
     //Get data and add it to the page
     $.getJSON("post.json", function (data) {
-        $(data.items).each(function (i, post) {
+        $(data.items).each(function (i, post) {     
+            var service = post.service_name;
+            var img_url = post.item_data.image_url;
+            var username = '';
+            var text =  post.item_data.text;
+            var tweet = post.item_data.tweet; 
+            var caption = post.item_data.caption;
+            var link_text = post.item_data.link_text;
+
+            // //Regex
+            // // var text = post.item_data.text;
+            // text = text.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:% ~\?\/.=]+/g,function(i){
+            //     var url = i.link(i);
+            //     return url;
+            // }) 
+
+        try { 
+            username = post.item_data.user.username;  
+        } catch (exception) { 
+            console.warn("Parse error: User data not found inside of post's item data");
+        }
             append(
-                post.service_name,
-                post.item_data.image_url, 
-                post.account_data.user_name,
-                post.item_data.text, 
-                post.item_data.tweet,
-                post.item_data.caption, 
-                post.item_data.link_text 
+                service,
+                img_url, 
+                username,
+                text, 
+                tweet,
+                caption, 
+                link_text 
             );
 
             //removes undefined from posts
@@ -85,12 +105,12 @@ $( document ).ready(function() {
         });
     }); 
 
-    var text = $('#text').val();
-    var image_url = $('#image_url').val();
-    var url = $(this).attr('action');
-
     //Submit post
-    $("#postForm").submit(function(e){
+    $("#postForm").submit(function(e){    
+        var text = $('#text').val();
+        var image_url = $('#image_url').val();
+        var url = $(this).attr('action');
+        
         $.ajax({
             url: 'post.json',
             method: 'POST',
